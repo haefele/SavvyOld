@@ -1,12 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.Text;
+﻿using System.Diagnostics;
+using Serilog.Core;
 using Serilog.Events;
 
 namespace Savvy.Logging
 {
-    public class DebugSink : Serilog.Core.ILogEventSink
+    public class DebugSink : ILogEventSink
     {
         public void Emit(LogEvent logEvent)
         {

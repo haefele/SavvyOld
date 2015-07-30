@@ -12,45 +12,49 @@ using Anotar.Custom;
 using Caliburn.Micro;
 using Caliburn.Micro.ReactiveUI;
 using DropboxRestAPI;
+using LiteGuard;
 using ReactiveUI;
-using Savvy.Events;
 using Savvy.Services;
+using Savvy.Services.Authentication;
 using Savvy.Services.Exceptions;
 using Savvy.Services.Ynab;
+
+using INavigationService = Savvy.Services.Navigation.INavigationService;
 
 namespace Savvy.ViewModels
 {
     public class ShellViewModel : ReactiveScreen, IHandle<UserLoggedInEvent>
     {
         #region Fields
-        private readonly IYnabService _ynabService;
+        private readonly IAuthenticationService _authenticationService;
         private readonly INavigationService _navigationService;
         private readonly IEventAggregator _eventAggregator;
         private readonly IExceptionHandler _exceptionHandler;
         #endregion
 
         #region Properties
-        public ReactiveCommand<Unit> Login { get; set; }
+        public ReactiveCommand<Unit> Login { get; }
         #endregion
 
         #region Constructors
-        public ShellViewModel(IYnabService ynabService, INavigationService navigationService, IEventAggregator eventAggregator, IExceptionHandler exceptionHandler)
+        public ShellViewModel(IAuthenticationService authenticationService, INavigationService navigationService, IEventAggregator eventAggregator, IExceptionHandler exceptionHandler)
         {
-            this._ynabService = ynabService;
+            Guard.AgainstNullArgument("authenticationService", authenticationService);
+            Guard.AgainstNullArgument("navigationService", navigationService);
+            Guard.AgainstNullArgument("eventAggregator", eventAggregator);
+            Guard.AgainstNullArgument("exceptionHandler", exceptionHandler);
+
+            this._authenticationService = authenticationService;
             this._navigationService = navigationService;
             this._eventAggregator = eventAggregator;
             this._exceptionHandler = exceptionHandler;
 
-            this.CreateCommands();
+            this.Login = ReactiveCommand.CreateAsyncTask(_ => this._authenticationService.LoginAsync());
+            this.Login.ThrownExceptions.Subscribe(this._exceptionHandler.Handle);
         }
         #endregion
 
         #region Private Methods
-        private void CreateCommands()
-        {
-            this.Login = ReactiveCommand.CreateAsyncTask(_ => this._ynabService.StartLoginAsync());
-            this.Login.ThrownExceptions.Subscribe(this._exceptionHandler.Handle);
-        }
         protected override void OnActivate()
         {
             this._eventAggregator.Subscribe(this);
@@ -64,6 +68,7 @@ namespace Savvy.ViewModels
         #region Event Handlers
         void IHandle<UserLoggedInEvent>.Handle(UserLoggedInEvent message)
         {
+            this._navigationService.ClearHistory();
             this._navigationService.NavigateToViewModel<BudgetsViewModel>();
         }
         #endregion

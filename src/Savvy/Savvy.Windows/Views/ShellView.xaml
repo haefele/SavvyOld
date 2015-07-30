@@ -10,6 +10,8 @@
       
       Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
     <Grid>
-
+        <Button Content="Bei Dropbox einloggen" 
+                Command="{Binding Login}"
+                HorizontalAlignment="Center"/>
     </Grid>
 </Page>

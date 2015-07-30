@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Text.RegularExpressions;
+using Windows.UI.Xaml.Controls;
+using Anotar.Custom;
 using Caliburn.Micro;
 using Serilog;
 using Serilog.Events;
@@ -8,46 +10,35 @@ namespace Savvy.Logging
 {
     public class Logger
     {
-        #region Fields
-        private readonly ILogger _actualLogger;
+        #region Properties
+        /// <summary>
+        /// Gets the actual logger.
+        /// </summary>
+        public ILogger ActualLogger { get; }
+
         #endregion
 
         #region Properties
         /// <summary>
         /// Gets a value indicating whether debug logging is enabled.
         /// </summary>
-        public bool IsDebugEnabled
-        {
-            get { return this._actualLogger.IsEnabled(LogEventLevel.Debug); }
-        }
+        public bool IsDebugEnabled => this.ActualLogger.IsEnabled(LogEventLevel.Debug);
         /// <summary>
         /// Gets a value indicating whether information logging is enabled.
         /// </summary>
-        public bool IsInformationEnabled
-        {
-            get { return this._actualLogger.IsEnabled(LogEventLevel.Information); }
-        }
+        public bool IsInformationEnabled => this.ActualLogger.IsEnabled(LogEventLevel.Information);
         /// <summary>
         /// Gets a value indicating whether warning logging is enabled.
         /// </summary>
-        public bool IsWarningEnabled
-        {
-            get { return this._actualLogger.IsEnabled(LogEventLevel.Warning); }
-        }
+        public bool IsWarningEnabled => this.ActualLogger.IsEnabled(LogEventLevel.Warning);
         /// <summary>
         /// Gets a value indicating whether error logging is enabled.
         /// </summary>
-        public bool IsErrorEnabled
-        {
-            get { return this._actualLogger.IsEnabled(LogEventLevel.Error); }
-        }
+        public bool IsErrorEnabled => this.ActualLogger.IsEnabled(LogEventLevel.Error);
         /// <summary>
         /// Gets a value indicating whether fatal logging is enabled.
         /// </summary>
-        public bool IsFatalEnabled
-        {
-            get { return this._actualLogger.IsEnabled(LogEventLevel.Fatal); }
-        }
+        public bool IsFatalEnabled => this.ActualLogger.IsEnabled(LogEventLevel.Fatal);
         #endregion
 
         #region Constructors
@@ -57,7 +48,7 @@ namespace Savvy.Logging
         /// <param name="actualLogger">The actual logger.</param>
         public Logger(ILogger actualLogger)
         {
-            this._actualLogger = actualLogger;
+            this.ActualLogger = actualLogger;
         }
         #endregion
 
@@ -136,7 +127,7 @@ namespace Savvy.Logging
             string lineNumber = this.ExtractLineNumber(format);
 
             string newFormat = this.RemoveMethodNameAndLineNumber(format);
-            var logger = this._actualLogger
+            var logger = this.ActualLogger
                 .ForContext("Method", methodName)
                 .ForContext("Line", lineNumber);
 
@@ -157,7 +148,7 @@ namespace Savvy.Logging
         /// <param name="message">The message.</param>
         private string ExtractLineNumber(string message)
         {
-            var match = Regex.Match(message, @".*\. Line: (.*)\..*");
+            var match = Regex.Match(message, @".*\. Line: \~([0-9]*)\..*");
             return match.Groups[1].Value;
         }
         /// <summary>

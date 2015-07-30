@@ -120,11 +120,16 @@
     <Reference Include="Caliburn.Micro.ReactiveUI">
       <HintPath>..\..\packages\Caliburn.Micro.ReactiveUI.2.2.1\lib\portable-net45+win8+wp8+wpa81\Caliburn.Micro.ReactiveUI.dll</HintPath>
     </Reference>
-    <Reference Include="DropboxRestAPI">
-      <HintPath>..\..\packages\DropboxRestAPI.1.1.4\lib\portable-net45+win8+wpa81\DropboxRestAPI.dll</HintPath>
+    <Reference Include="DropboxRestAPI, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\packages\DropboxRestAPI.1.1.5\lib\portable-net45+win8+wpa81\DropboxRestAPI.dll</HintPath>
     </Reference>
-    <Reference Include="Newtonsoft.Json">
-      <HintPath>..\..\packages\DropboxRestAPI.1.1.4\lib\portable-net45+win8+wpa81\Newtonsoft.Json.dll</HintPath>
+    <Reference Include="LiteGuard">
+      <HintPath>..\..\packages\LiteGuard.0.10.0\lib\wpa81\LiteGuard.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=7.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\packages\Newtonsoft.Json.7.0.1\lib\portable-net40+sl5+wp80+win8+wpa81\Newtonsoft.Json.dll</HintPath>
     </Reference>
     <Reference Include="ReactiveUI">
       <HintPath>..\..\packages\reactiveui-core.6.0.3\lib\Portable-Win81+WPA81\ReactiveUI.dll</HintPath>

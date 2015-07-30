@@ -8,13 +8,37 @@
     mc:Ignorable="d"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
-    <Grid>
-        <TextBox HorizontalAlignment="Left"
-                 Margin="0"
-                 TextWrapping="Wrap"
-                 Text="Budgets"
-                 VerticalAlignment="Top">
-        </TextBox>
+    <Grid x:Name="LayoutRoot">
 
+        <Grid.ChildrenTransitions>
+            <TransitionCollection>
+                <EntranceThemeTransition />
+            </TransitionCollection>
+        </Grid.ChildrenTransitions>
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        
+        <TextBlock Text="Budgets"
+                   Margin="19, 0"
+                   Style="{ThemeResource HeaderTextBlockStyle}"
+                   CharacterSpacing="{ThemeResource PivotHeaderItemCharacterSpacing}" />
+
+        <ListView ItemsSource="{Binding Budgets}"
+                  SelectedItem="{Binding SelectedBudget, Mode=TwoWay}"
+                  Grid.Row="1"
+                  SelectionMode="Single"
+                  Margin="19, 0"
+                  >
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <TextBlock Text="{Binding BudgetName}"
+                               Style="{ThemeResource ListViewItemTextBlockStyle}"/>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+        
     </Grid>
 </Page>

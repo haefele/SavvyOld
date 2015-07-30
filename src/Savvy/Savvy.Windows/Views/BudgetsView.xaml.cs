@@ -5,8 +5,6 @@ using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
-using Windows.Graphics.Display;
-using Windows.UI.ViewManagement;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Controls.Primitives;
@@ -14,22 +12,19 @@ using Windows.UI.Xaml.Data;
 using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
-using Savvy.ViewModels;
+
+// The Blank Page item template is documented at http://go.microsoft.com/fwlink/?LinkId=234238
 
 namespace Savvy.Views
 {
-    public partial class BudgetsView
+    /// <summary>
+    /// An empty page that can be used on its own or navigated to within a Frame.
+    /// </summary>
+    public sealed partial class BudgetsView : Page
     {
-        public BudgetsViewModel ViewModel => this.DataContext as BudgetsViewModel;
-
         public BudgetsView()
         {
             this.InitializeComponent();
-        }
-
-        private async void ListViewBase_OnItemClick(object sender, ItemClickEventArgs e)
-        {
-            //await this.ViewModel.OpenBudget.ExecuteAsyncTask();
         }
     }
 }

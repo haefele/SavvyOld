@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Text;
 using Serilog;
 
@@ -16,7 +17,12 @@ namespace Savvy.Logging
 
         public static Logger GetLogger<T>()
         {
-            return new Logger(Log.ForContext<T>());
+            return GetLogger(typeof (T));
+        }
+
+        public static Logger GetLogger(Type type)
+        {
+            return new Logger(Log.ForContext(type));
         }
     }
 }

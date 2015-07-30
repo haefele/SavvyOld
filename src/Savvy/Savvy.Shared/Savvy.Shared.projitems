@@ -15,15 +15,31 @@
     <Compile Include="$(MSBuildThisFileDirectory)App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
-    <Compile Include="$(MSBuildThisFileDirectory)Events\UserLoggedInEvent.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Extensions\DropboxExtensions.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Logging\CaliburnLogger.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Logging\DebugSink.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Logging\Logger.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Logging\LoggerFactory.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Services\Authentication\AuthenticationService.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Services\Authentication\IAuthenticationService.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Services\Authentication\UserLoggedInEvent.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Services\Authentication\UserLoggedOutEvent.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Services\Dropbox\RemoveEtagDelegatingHandler.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Services\Dropbox\SavvyHttpClientFactory.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Services\Exceptions\ExceptionHandler.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Services\Exceptions\IExceptionHandler.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Services\Ynab\IYnabService.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Services\Ynab\YnabService.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Services\Ynab\IContinueYnabLogin.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Services\Navigation\INavigationService.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Services\Navigation\NavigationService.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Services\Session\ISessionService.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Services\Session\SessionService.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Services\Settings\HardCodedSettings.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Services\Settings\ISetting.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Services\Ynab\Budget.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Services\Ynab\BudgetService.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Services\Ynab\BudgetSynchronizationService.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Services\Ynab\IBudgetService.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Services\Ynab\IBudgetSynchronizationService.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Services\Ynab\SynchronizedBudget.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ViewModels\BudgetsViewModel.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ViewModels\ShellViewModel.cs" />
   </ItemGroup>

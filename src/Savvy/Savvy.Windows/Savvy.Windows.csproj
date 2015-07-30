@@ -105,6 +105,9 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Views\BudgetsView.xaml.cs">
+      <DependentUpon>BudgetsView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\ShellView.xaml.cs">
       <DependentUpon>ShellView.xaml</DependentUpon>
     </Compile>
@@ -141,10 +144,13 @@
       <HintPath>..\..\packages\Caliburn.Micro.ReactiveUI.2.2.1\lib\portable-net45+win8+wp8+wpa81\Caliburn.Micro.ReactiveUI.dll</HintPath>
     </Reference>
     <Reference Include="DropboxRestAPI">
-      <HintPath>..\..\packages\DropboxRestAPI.1.1.4\lib\portable-net45+win8+wpa81\DropboxRestAPI.dll</HintPath>
+      <HintPath>..\..\packages\DropboxRestAPI.1.1.5\lib\portable-net45+win8+wpa81\DropboxRestAPI.dll</HintPath>
+    </Reference>
+    <Reference Include="LiteGuard">
+      <HintPath>..\..\packages\LiteGuard.0.10.0\lib\win81\LiteGuard.dll</HintPath>
     </Reference>
     <Reference Include="Newtonsoft.Json">
-      <HintPath>..\..\packages\DropboxRestAPI.1.1.4\lib\portable-net45+win8+wpa81\Newtonsoft.Json.dll</HintPath>
+      <HintPath>..\..\packages\Newtonsoft.Json.7.0.1\lib\portable-net40+sl5+wp80+win8+wpa81\Newtonsoft.Json.dll</HintPath>
     </Reference>
     <Reference Include="ReactiveUI">
       <HintPath>..\..\packages\reactiveui-core.6.0.3\lib\Win8\ReactiveUI.dll</HintPath>
@@ -182,6 +188,10 @@
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
+    <Page Include="Views\BudgetsView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Views\ShellView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
